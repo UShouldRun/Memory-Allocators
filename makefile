@@ -43,7 +43,11 @@ install: build
 	install -d /usr/local/lib
 	install -m 644 $(TARGET_LIB) /usr/local/lib/
 	install -d /usr/local/include/$(TARGET_NAME)
-	install -m 644 $(INC_DIR)/*.h /usr/local/include/$(TARGET_NAME)/
+	install -m 644 $(INC_DIR)/alloc.h $(INC_DIR)/utils.h /usr/local/include/$(TARGET_NAME)/
+
+uninstall:
+	rm -f /usr/local/lib/$(notdir $(TARGET_LIB))
+	rm -rf /usr/local/include/$(TARGET_NAME)
 
 commit:
 	git add .

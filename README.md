@@ -77,7 +77,7 @@ make install
 
 ### Arena Example
 ```c
-#include "alloc.h"
+#include <alloc/alloc.h>
 #include <stdio.h>
 #include <string.h>
 #include <assert.h>
@@ -122,7 +122,7 @@ int main() {
 
 ### Pool Example
 ```c
-#include "alloc.h"
+#include <alloc/alloc.h>
 #include <stdio.h>
 #include <string.h>
 #include <assert.h>
