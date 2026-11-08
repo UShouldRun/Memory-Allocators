@@ -376,11 +376,11 @@ bool pool_reset(Pool* pool) {
   if (pool->memory == NULL)
     return false;
 
-  for (Pool* node = pool; pool != NULL; pool = pool->next) {
+  for (Pool* node = pool; node != NULL; node = node->next) {
     arena_reset(node->fl_arena);
 
-    node->free_list = (FreeRegion*)arena_alloc(pool->fl_arena, sizeof(struct free_region));
-    assert(pool->free_list != NULL);
+    node->free_list = (FreeRegion*)arena_alloc(node->fl_arena, sizeof(struct free_region));
+    assert(node->free_list != NULL);
 
     *node->free_list = (FreeRegion){
       .start_block = 0,
