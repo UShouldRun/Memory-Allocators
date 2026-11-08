@@ -147,8 +147,10 @@ bool arena_reset(Arena* arena) {
   if (arena->memory == NULL)
     return false;
 
-  memset(arena->memory, 0, arena->s_arena);
-  arena->ptr = arena->memory;
+  for (Arena* node = arena; node != NULL; node = node->next) {
+    memset(node->memory, 0, __arena_size_memory(node));
+    node->ptr = __arena_get_base_ptr(node);
+  }
 
   return true;
 }
